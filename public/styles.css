@@ -1,0 +1,144 @@
+:root{
+  --brand:#B3171F; --brand-dark:#8F1218; --brand-tint:#F3D6D7;
+  --yes:#2E8B4E; --yes-btn:#1F7A3F; --yes-dark:#0F4D26; --yes-tint:#E3F1E7; --yes-text:#145A2D;
+  --no:#D32F2F; --no-btn:#C62828; --no-dark:#7F1414; --no-tint:#FBE3E4; --no-text:#8F1218;
+  --ink:#1B1B1B; --ink-2:#4A4A4A; --muted:#5C5C5C; --line:#DEDAD5; --bg:#F4F2EF; --surface:#FFFFFF; --off:#ECE9E5;
+  --font:'Archivo', 'Arial Narrow', system-ui, sans-serif;
+  --focus:#1A5FD0;
+}
+*{box-sizing:border-box}
+html,body{margin:0; height:100%}
+body{font-family:var(--font); background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent}
+button,input{font:inherit; color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+#app{min-height:100dvh}
+
+/* ---------- Layout ---------- */
+.screen{min-height:100dvh; max-width:480px; margin:0 auto; padding:max(16px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:20px; position:relative}
+.screen.red{background:var(--brand); color:#fff; max-width:none}
+.screen.red > *{width:100%; max-width:440px; margin-inline:auto}
+.screen.yes{background:var(--yes); color:#fff; max-width:none; align-items:center}
+.screen.no{background:var(--no); color:#fff; max-width:none; align-items:center}
+.wrap-bg{background:inherit}
+.grow{flex-grow:1}
+.center{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center}
+.bar{display:flex; align-items:center; justify-content:space-between; min-height:44px; gap:8px}
+.row{display:flex; align-items:center; gap:4px}
+.stack{display:flex; flex-direction:column; gap:8px}
+.stack-12{display:flex; flex-direction:column; gap:12px}
+
+/* ---------- Tipografía ---------- */
+.label{font-size:14px; font-weight:600; color:var(--muted)}
+.red .label,.yes .label,.no .label{color:#fff}
+.h1{margin:0; font-weight:800; font-stretch:75%; text-transform:uppercase; line-height:1; font-size:34px}
+.h-xl{margin:0; font-weight:900; font-stretch:70%; text-transform:uppercase; line-height:.95; font-size:44px}
+.h-xxl{margin:0; font-weight:900; font-stretch:70%; text-transform:uppercase; line-height:.95; font-size:52px}
+.h2{margin:0; font-size:18px; font-weight:800; font-stretch:80%; text-transform:uppercase}
+.p{margin:0; font-size:16px; color:var(--muted); line-height:1.4}
+.red .p{color:#fff}
+.small{margin:0; font-size:14px; color:var(--muted); text-align:center}
+
+/* ---------- Botones ---------- */
+.btn{height:56px; border:0; border-radius:12px; font-size:17px; font-weight:600; width:100%; transition:background .15s, transform .05s}
+.btn:active{transform:scale(.99)}
+.btn-primary{background:var(--brand); color:#fff}
+.btn-primary:hover{background:var(--brand-dark)}
+.btn-secondary{background:transparent; border:1.5px solid var(--ink); color:var(--ink)}
+.btn-dark{background:var(--ink); color:#fff}
+.btn-white{background:#fff; color:var(--brand); font-weight:800}
+.btn-outline-white{background:transparent; border:1.5px solid #fff; color:#fff}
+.btn:disabled{background:#D9D5D0; color:#6B6B6B; border:0; cursor:not-allowed}
+.btn-link{min-height:48px; border:0; background:transparent; font-size:16px; font-weight:600; text-decoration:underline; width:100%}
+.btn-link.danger{color:#A3141B; text-decoration:none}
+.icon-btn{width:44px; height:44px; border:0; background:transparent; padding:0; display:flex; align-items:center; justify-content:center; color:inherit; border-radius:10px; flex-shrink:0}
+.icon-btn:hover{background:rgba(0,0,0,.05)}
+.red .icon-btn:hover,.yes .icon-btn:hover,.no .icon-btn:hover{background:rgba(255,255,255,.12)}
+.spacer44{width:44px; height:44px; flex-shrink:0}
+.pill{font-size:14px; font-weight:600; padding:8px 12px; border-radius:999px; background:var(--surface); border:1px solid var(--line); white-space:nowrap}
+.red .pill{background:rgba(255,255,255,.15); border:0}
+.pill-dark{background:var(--ink); color:#fff; border:0; font-weight:800; font-variant-numeric:tabular-nums}
+.chip-btn{min-height:44px; padding:0 18px; border-radius:999px; border:1.5px solid var(--ink); background:transparent; font-size:15px; font-weight:600; display:inline-flex; gap:8px; align-items:center}
+
+/* ---------- Inicio ---------- */
+.logo-card{width:280px; height:200px; background:var(--brand); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:#fff}
+.logo-card b{font-size:44px; font-weight:900; font-stretch:62%; line-height:.9; text-transform:uppercase; text-align:center}
+
+/* ---------- Formularios ---------- */
+.field label{font-size:14px; font-weight:600}
+.input{height:56px; padding:0 16px; border-radius:12px; border:2px solid var(--ink); background:var(--surface); font-size:18px; width:100%}
+.input[aria-invalid="true"]{border-color:var(--brand)}
+.code-input{height:72px; text-align:center; font-size:40px; font-weight:800; letter-spacing:.5em; padding-left:.5em}
+.error{margin:0; display:flex; gap:8px; align-items:center; font-size:14px; color:#A3141B}
+.error[hidden]{display:none}
+
+/* ---------- Sala ---------- */
+.card-box{background:var(--surface); border-radius:16px; padding:20px; display:flex; flex-direction:column; align-items:center; gap:12px}
+.big-code{font-size:72px; font-weight:900; font-stretch:75%; letter-spacing:.12em; line-height:1}
+.list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px}
+.player{min-height:56px; padding:0 16px; border-radius:12px; background:var(--surface); display:flex; align-items:center; gap:12px}
+.player.off{opacity:.55}
+.avatar{width:32px; height:32px; border-radius:50%; background:var(--brand-tint); color:var(--brand-dark); display:flex; align-items:center; justify-content:center; font-weight:800; flex-shrink:0}
+.avatar.lg{width:96px; height:96px; font-size:44px; font-weight:900}
+.player .name{font-size:17px; font-weight:600; flex-grow:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.player .tag{font-size:13px; color:var(--muted)}
+.placeholder{min-height:56px; padding:0 16px; border-radius:12px; border:1.5px dashed #BDB8B2; display:flex; align-items:center; font-size:15px; color:var(--muted)}
+.dots{display:flex; gap:8px}
+.dots span{width:10px; height:10px; border-radius:50%; background:var(--brand); animation:pulse 1.2s infinite ease-in-out}
+.dots span:nth-child(2){animation-delay:.2s} .dots span:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,100%{opacity:.25} 50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){.dots span{animation:none; opacity:.6}}
+
+/* ---------- Turno ---------- */
+.back-card{width:260px; height:186px; border-radius:14px; background:var(--brand-dark); border:2px solid rgba(255,255,255,.35); display:flex; align-items:center; justify-content:center; transform:rotate(-4deg)}
+.back-card b{font-size:32px; font-weight:900; font-stretch:62%; text-transform:uppercase; line-height:.9}
+.progress{height:6px; border-radius:999px; background:rgba(0,0,0,.12); overflow:hidden}
+.red .progress{background:rgba(255,255,255,.25)}
+.progress > i{display:block; height:100%; border-radius:999px; background:var(--ink); transition:width 1s linear}
+.red .progress > i{background:#fff}
+.game-card{width:100%; aspect-ratio:63/88; max-height:58dvh; padding:28px 24px; border-radius:20px; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.08); display:flex; flex-direction:column; justify-content:space-between; margin-inline:auto}
+.game-card .cat{font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#A3141B}
+.game-card .txt{margin:0; font-weight:800; font-stretch:75%; text-transform:uppercase; line-height:1.08; text-align:center; text-wrap:balance}
+.game-card .brand{font-size:12px; color:#6B6B6B; text-align:right}
+.quote{margin:0; padding:16px; border-radius:14px; background:#fff; font-size:18px; font-weight:800; font-stretch:78%; text-transform:uppercase; line-height:1.15}
+.tally{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px}
+.tally div{border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:2px}
+.tally b{font-size:36px; font-weight:900; line-height:1}
+.tally span{font-size:13px; font-weight:600}
+.t-yes{background:var(--yes-btn); color:#fff} .t-no{background:var(--no-btn); color:#fff} .t-none{background:var(--off); color:var(--ink-2)}
+.vote-row{min-height:48px; padding:0 12px 0 16px; border-radius:12px; background:#fff; display:flex; align-items:center; gap:8px}
+.vote-row .name{font-size:16px; font-weight:600; flex-grow:1}
+.chip{min-width:96px; height:32px; padding:0 10px; border-radius:999px; display:flex; align-items:center; justify-content:center; gap:4px; font-size:13px; font-weight:700}
+.c-yes{background:var(--yes-tint); color:var(--yes-text)} .c-no{background:var(--no-tint); color:var(--no-text)} .c-none{background:var(--off); color:var(--ink-2)}
+
+/* ---------- Votar / paletas ---------- */
+.vote-btn{flex:1 1 0; min-height:180px; border:0; border-radius:20px; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px}
+.vote-btn span{font-size:36px; font-weight:900; font-stretch:72%; text-transform:uppercase}
+.vote-btn.yes{background:var(--yes-btn)} .vote-btn.no{background:var(--no-btn)}
+.vote-btn:active{filter:brightness(.92)}
+.vote-mini{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; opacity:.4}
+.vote-mini button{height:64px; border:0; border-radius:14px; color:#fff; font-size:18px; font-weight:800; text-transform:uppercase}
+.paddle-word{font-size:64px; font-weight:900; font-stretch:68%; text-transform:uppercase; line-height:1}
+.paddle-icon{width:min(66vw, 280px); height:auto}
+.swap-btn{min-height:56px; padding:0 24px; border:0; border-radius:999px; background:#fff; font-size:16px; font-weight:700; display:flex; align-items:center; gap:10px}
+.yes .swap-btn{color:var(--yes-dark)} .no .swap-btn{color:var(--no-dark)}
+.paddle-top{width:100%; display:flex; justify-content:space-between; align-items:center}
+.yes .icon-btn,.no .icon-btn{color:rgba(255,255,255,.8)}
+
+/* ---------- Fin ---------- */
+.stat{border-radius:16px; background:rgba(255,255,255,.14); padding:16px; display:flex; flex-direction:column; gap:4px; text-align:left}
+.stat b{font-size:40px; font-weight:900; line-height:1}
+
+/* ---------- Hojas (menú / confirmar) ---------- */
+.scrim{position:fixed; inset:0; background:rgba(20,20,20,.5); display:flex; flex-direction:column; justify-content:flex-end; z-index:20; animation:fade .15s}
+.sheet{background:#fff; color:var(--ink); border-radius:24px 24px 0 0; padding:12px 20px max(28px, env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:16px; width:100%; max-width:480px; margin:0 auto; animation:up .2s ease-out}
+.grip{align-self:center; width:40px; height:4px; border-radius:999px; background:var(--line)}
+.menu-item{min-height:56px; border:0; background:transparent; border-radius:12px; display:flex; align-items:center; gap:12px; padding:0 12px; font-size:17px; font-weight:600; text-align:left; width:100%}
+.menu-item:hover{background:var(--bg)}
+.menu-item.danger{color:#A3141B}
+@keyframes fade{from{opacity:0}} @keyframes up{from{transform:translateY(24px); opacity:.6}}
+@media (prefers-reduced-motion: reduce){.scrim,.sheet{animation:none}}
+
+.offline{position:fixed; top:0; left:0; right:0; z-index:30; background:var(--ink); color:#fff; text-align:center; font-size:14px; font-weight:600; padding:10px}
+.toast{position:fixed; left:50%; bottom:max(24px, env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:40; background:var(--ink); color:#fff; padding:12px 18px; border-radius:999px; font-size:15px; font-weight:600}
+[hidden]{display:none !important}
