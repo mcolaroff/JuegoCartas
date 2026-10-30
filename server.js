@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const CARDS = require('./cards');
+const { mazoActual } = require('./deck');
 
 // ---------- Reglas (ajustables) ----------
 const MIN_PLAYERS = 3;
@@ -65,7 +65,7 @@ function viewFor(room, playerId) {
     // La carta solo la ve el lector. El resto no la necesita: la escucha.
     card: isReader && room.card ? room.card : null,
     cardNumber: room.cardsUsed,
-    deckTotal: CARDS.length,
+    deckTotal: room.cards ? room.cards.length : mazoActual().length,
     round: room.round,
     turn: room.turn,
     myVote: room.votes.get(playerId) || null,
@@ -254,7 +254,8 @@ io.on('connection', (socket) => {
     const { room, player } = ctx(); if (!room) return;
     if (room.phase !== 'lobby' || room.hostId !== player.id) return;
     if (connected(room).length < MIN_PLAYERS) return;
-    room.deck = shuffle(CARDS.map((_, i) => i));
+    room.cards = mazoActual(); // el mazo vigente según la fecha, fijo para toda la partida
+    room.deck = shuffle(room.cards.map((_, i) => i));
     nextTurn(room);
   });
 
@@ -262,7 +263,7 @@ io.on('connection', (socket) => {
     const { room, player } = ctx(); if (!room) return;
     if (room.phase !== 'offer' || room.readerId !== player.id) return;
     clearTimers(room);
-    room.card = CARDS[room.deck.pop()]; // cartas sin repetir
+    room.card = room.cards[room.deck.pop()]; // cartas sin repetir
     room.cardsUsed += 1;
     room.turn += 1;
     room.phase = 'reading';
